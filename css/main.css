@@ -1,0 +1,14 @@
+.input-error {
+	box-sizing: border-box;
+	width: 81.8%;
+	margin-top: 10px;
+	height: 30px;
+	margin-left: 68px;
+	padding-top: 5px;
+	color: #e3294e;
+	font-size: 12px;
+	display: block;
+}
+.red-boder {
+	border: 1px solid #E3294E!important;
+}
