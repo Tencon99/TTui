@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>推推</title>
+    <meta name="description" content="">
+    <meta name="author" content="Tencon">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- stylesheets 样式表 -->
+	<link href="https://cdn.bootcss.com/normalize/8.0.1/normalize.css" rel="stylesheet">
+	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="../css/ionicons.css" rel="stylesheet"/>
+	<link href="../css/owl.carousel.css" rel="stylesheet"/>
+	<link href="../css/style.css" rel="stylesheet"/>
+	<link rel="stylesheet" type="text/css" href="../css/main.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/style2.css"/>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+	<script type="text/javascript" src="../js/modernizr.custom.28468.js"></script>
+	
+	<!-- 使用Google Web字体 -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200i,300,300i,400,600,700,700i,900" rel="stylesheet"/>
+	<link href="https://fonts.googleapis.com/css?family=Cardo:400,400i,700" rel="stylesheet"/>
+	
+    <script src="js/modernizr.js"></script>
+
+</head>
+
+<body style="font-family: 'Source Sans Pro', sans-serif;">
+	<!-- navbar 导航栏 -->
+	<header id="top" >
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="index.html">TTui</a> 
+				</div>
+				<div id="navbar" class="navbar-collapse collapse nav-top">
+					<ul class="nav navbar-nav nav-right">
+						<li class="active"><a href="index.html">Home</a></li>
+						<li><a href="#">关于</a></li>
+						<li><a href="#">通知</a></li>
+						<li><a href="#">搜索</a></li>
+						<li><a href="javascript:void(0);" class="log-in">登录</a></li>
+						<li><a href="javascript:void(0);" class="sign-in">注册</a></li>
+						<!-- 登录后显示 --><li><a href="user.html">我的</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<!-- /# navbar end -->
+	<!-- 注册、登录 -->
+			<div class="loadingDiv">
+			<div id="sign-in" class="in-box">
+				<div class="row close-btn">
+					<i class="icon-close-black"></i>
+				</div>
+				<div class="sign-in-content">
+					<div class="in-top">
+						<h2 class="text-left">注册</h2>
+						<p class="text-right"><a href="javascript:void(0);" class="log-in">已有账号？<em>立即登录</em></a></p>
+					</div>
+					<!-- 注册表单 -->
+					<form action="#" method="post">
+					<div class="sign-in-form">
+						<div class="form-input">
+							<label for="phone"><em>*</em>手机号 </label>
+							<input  data-rule='pattern:"^[1][3,4,5,7,8][0-9]{9}$"|numeric:true'
+							 type="text" name="phone" id="phone" onchange="check()"  placeholder="请输入手机号" />
+							<div id="phone-input-error" class="input-error alert alert-danger alert-dismissible show ">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								请输入正确格式的手机号
+							</div>
+						</div>
+						<div class="form-input custom-control-inline">
+							<label for="auth-code"><em>*</em>验证码 </label>
+							<input onchange="check()" type="text" name="auth-code" id="auth-code" placeholder="请输入验证码" />
+							<!-- .disabled类为验证手机号是否输入正确成功，一旦成功消除该类 -->
+							<input onchange="check()" type="button" name="code-btn" id="code-btn" class="btn disabled-code" value="发送验证码" />
+						</div>
+						<div class="row form-input">
+							<label for="pwd"><em>*</em>密码 </label>
+							<input data-rule='minlength:6|maxlength:18'
+							type="password" onchange="check()" name="pwd" id="pwd" placeholder="请输入密码" />
+							<div id="pwd-input-error" class="input-error alert alert-danger alert-dismissible show">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								密码最少为6位，最多为18位
+							</div>
+						</div>
+						<div class="row form-input custom-control custom-checkbox checkbox">
+							<input onchange="check()" type="checkbox" class="custom-control-input" name="agreeCheckbox" id="agreeCheckbox" value="true" />
+							<label class="custom-control-label label-txt" for="agreeCheckbox">
+								我已阅读并同意<a href="javascript:void(0);" >《推推服务协议》</a>
+							</label>
+						</div>
+					</div>
+					<div class="row form-input submit-btn">
+						<!-- .disabled类为验证未可注册是存在，一旦可以注册即消除该类 -->
+						<input type="submit" class="btn disabled" name="sign-in-btn" id="sign-in-btn" value="注册" />
+					</div>
+					</form>
+				</div>
+			</div>
+			
+			
+			
+				<div id="log-in" class="in-box" style="none;background-color: #D9D9D9!important; height: 400px!important;">
+				<div class="row close-btn">
+					<i class="icon-close-black"></i>
+				</div>
+				<div class="log-in-content">
+					<div class="in-top">
+						<h2 class="text-left">欢迎登录推推</h2>
+						<p class="text-right"><a href="javascript:void(0);" class="sign-in">还没有账号？<em>立即注册</em></a></p>
+					</div>
+					<!-- 登录表单 -->
+					<form action="#" method="post">
+					<div class="log-in-form">
+						<div class="form-input">
+							<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjJweCIgaGVpZ2h0PSIyNHB4IiB2aWV3Qm94PSIwIDAgMjIgMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDQzLjIgKDM5MDY5KSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IueZu+W9leagt+W8jyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTQ3Ni4wMDAwMDAsIC0zMzMuMDAwMDAwKSIgZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSIjNjY2NjY2Ij4KICAgICAgICAgICAgPHBhdGggZD0iTTQ4My4yODQ0MDUsMzQ3LjEwMDk3IEM0ODAuODMyMzQ1LDM0NS42MDY1ODkgNDc5LjQxNTc4OSwzNDMuNTA3MTQ2IDQ3OS4zMjk1MzEsMzQwLjYxNjUxMSBDNDc5LjI2OTA4OCwzMzguNTkwOTEgNDc5Ljk1NzA3NywzMzYuODMzMzA3IDQ4MS4zNTI2MjEsMzM1LjM3MDk2MiBDNDg0LjQxNDQ5LDMzMi4xNjI1MjggNDg5LjI5NzYyNSwzMzIuMjQ3MjMxIDQ5Mi4yOTUxNDgsMzM1LjQ4NzY3MyBDNDk1LjQ3MTczNiwzMzguOTIxNzUyIDQ5NC41OTQ1MzEsMzQ0Ljg3NjAzIDQ5MC4yNDgwNzIsMzQ3LjEwNzExIEM0OTAuNDYwMTAxLDM0Ny4xOTk2NDQgNDkwLjY1MDU0NSwzNDcuMjgzOTM4IDQ5MC44NDE4OSwzNDcuMzY2MTAyIEM0OTMuODQzMzY5LDM0OC42NTQ2NzcgNDk1LjkxNDYyMywzNTAuODMzNSA0OTcuMDAwOTkyLDM1My45MTk4NDYgQzQ5Ny4yNDc5NzcsMzU0LjYyMTUwNyA0OTcuMzUxMzcyLDM1NS4zNzQ3MTUgNDk3LjUwNzg5NywzNTYuMTA2OTY1IEM0OTcuNTM0ODAzLDM1Ni4yMzI4NDYgNDk3LjUxNTg2NSwzNTYuMzc3NTU1IDQ5Ny40ODQzNDgsMzU2LjUwNTIwOSBDNDk3LjQwNTcwMywzNTYuODIzOTg5IDQ5Ny4xNzkyMzksMzU2Ljk5MDMxMSA0OTYuODcxOTc0LDM1Ni45ODAzNTEgQzQ5Ni41NDU5MzUsMzU2Ljk2OTc2MyA0OTYuMzA5NjE5LDM1Ni43NzE1MTQgNDk2LjI0MzAzNiwzNTYuNDU0NzUzIEM0OTYuMTE3OTIsMzU1Ljg1OTYyNiA0OTYuMDQ5MjA4LDM1NS4yNDUzNjkgNDk1Ljg1Njk5MSwzNTQuNjcyODM2IEM0OTQuNjM2ODU1LDM1MS4wMzg4NzEgNDkyLjE5MDQxNiwzNDguNzM3Njg3IDQ4OC4zOTIzOTUsMzQ4LjA1OTU0OSBDNDg1LjEzODg1NCwzNDcuNDc4NjM5IDQ4Mi4zMTAwODEsMzQ4LjQyMjI5MSA0NzkuOTY4MTgzLDM1MC43NjY0NTMgQzQ3OC40NDk4NDMsMzUyLjI4NjI0IDQ3Ny41OTY5NzgsMzU0LjE0MTMxNyA0NzcuMzE2MjM4LDM1Ni4yNjY4NDcgQzQ3Ny4yNjMyMTcsMzU2LjY2ODI1NiA0NzcuMTAyNzM1LDM1Ni44OTYyNDggNDc2LjgwNjE5NSwzNTYuOTY4ODA4IEM0NzYuMzU3ODUsMzU3LjA3ODUzMyA0NzUuOTc1NjUyLDM1Ni43Mzk5OTYgNDc2LjAyMDQwNSwzNTYuMjY2NjgzIEM0NzYuMTgxMzc3LDM1NC41NjM2MjkgNDc2LjczMTg4OSwzNTIuOTkzNjg2IDQ3Ny42NTkxNDEsMzUxLjU2MTM1NyBDNDc4LjkxNTk1MiwzNDkuNjE5OTY4IDQ4MC42MjA1ODksMzQ4LjIxNDU3MyA0ODIuNzU3NjA3LDM0Ny4zMzczNjggQzQ4Mi44OTQ3MywzNDcuMjgxMDcyIDQ4My4wMjk0NTIsMzQ3LjIxODkxIDQ4My4xNjUxMDEsMzQ3LjE1OTA5NCBDNDgzLjE5MDY5NywzNDcuMTQ3ODI0IDQ4My4yMTU1MDIsMzQ3LjEzNDY0NCA0ODMuMjg0NDA1LDM0Ny4xMDA5NyBaIE00ODYuNzYzNTM3LDM0Ni42MTA5NTcgQzQ5MC4xMjU5MywzNDYuNjExNzc1IDQ5Mi44MzM4NzEsMzQzLjkwMTU0MiA0OTIuODg0NzM2LDM0MC42MDU1OTYgQzQ5Mi45NDAxMDQsMzM3LjAxNjEzOCA0OTAuMDkyNjkzLDMzNC40MTU2ODUgNDg2LjkxOTc4OSwzMzQuMzMzMjc0IEM0ODMuNTk4NjgzLDMzNC4yNDcwMTcgNDgwLjY5MzQ0OCwzMzYuODk2MjM0IDQ4MC42Mzg1OTksMzQwLjM3NDQxIEM0ODAuNTg0ODQxLDM0My43ODM1MjEgNDgzLjMwOTE1NSwzNDYuNjA5OTQ3IDQ4Ni43NjM1MzcsMzQ2LjYxMDk1NyBaIiBpZD0iU2hhcGUiPjwvcGF0aD4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==" alt="">
+							<input type="text" name="phone" id="user_phone" placeholder="请输入手机号" />
+						</div>
+						<div class="form-input">
+							<img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyNHB4IiB2aWV3Qm94PSIwIDAgMjAgMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDQzLjIgKDM5MDY5KSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDxkZXNjPkNyZWF0ZWQgd2l0aCBTa2V0Y2guPC9kZXNjPgogICAgPGRlZnM+PC9kZWZzPgogICAgPGcgaWQ9IlBhZ2UtMSIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCI+CiAgICAgICAgPGcgaWQ9IueZu+W9leagt+W8jyIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTQ3Ny4wMDAwMDAsIC00MDIuMDAwMDAwKSIgZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSIjNjY2NjY2Ij4KICAgICAgICAgICAgPHBhdGggZD0iTTQ5Mi40NDg0NDUsNDEwLjU3MjgyIEw0ODEuMjYyODQsNDEwLjU3MjgyIEw0ODEuMjYyODQsNDA4LjI5MjYzOCBDNDgxLjI2Mjg0LDQwNS40MjIxMjcgNDgzLjUyNjU0OSw0MDMuMTczMTkyIDQ4Ni40MjIyNzcsNDAzLjE1NTI2NiBDNDg5LjI1MjI0OCw0MDMuMTcxNzY3IDQ5MS4zODMwNDYsNDA1LjM3MjY1MiA0OTEuMzgzMDQ2LDQwOC4yOTI2MzggTDQ5MS4zODMwNDYsNDA5LjQzNDI2NCBDNDkxLjM4MzA0Niw0MDkuNzQ4ODQ4IDQ5MS42MjA3MTgsNDEwLjAwNTAyMiA0OTEuOTE1NzU5LDQxMC4wMDUwMjIgQzQ5Mi4yMTA3NzMsNDEwLjAwNTAyMiA0OTIuNDQ4NDcyLDQwOS43NTAyNzMgNDkyLjQ0ODQ3Miw0MDkuNDM0MjY0IEw0OTIuNDQ4NDcyLDQwOC4yOTI2MzggQzQ5Mi40NDg0NzIsNDA0LjczNTgwOCA0ODkuODc3MTk2LDQwMi4wNDk1NzQgNDg2LjQ1NzE5Nyw0MDIuMDE1MTc1IEw0ODYuMzg4NjQ1LDQwMi4wMTUxNzUgQzQ4Mi45MTI3MDIsNDAyLjA0OTU3NCA0ODAuMTk3NDE0LDQwNC43OTQyNzMgNDgwLjE5NzQxNCw0MDguMjkyNjEgTDQ4MC4xOTc0MTQsNDEwLjYzMjczOCBDNDc4LjM5NTA3LDQxMC45MTQ0MyA0NzcuMDAxMTA4LDQxMi41NjM5MzYgNDc3LjAwMTEwOCw0MTQuNTcwMSBMNDc3LjAwMTEwOCw0MjEuOTg5MTA3IEM0NzcuMDAxMTA4LDQyNC4xOTQ0MDUgNDc4LjY3MzQxOCw0MjUuOTg0ODUzIDQ4MC43MzAxMjcsNDI1Ljk4NDg1MyBMNDkyLjQ0ODQ0NSw0MjUuOTg0ODUzIEM0OTQuNTA2Njg4LDQyNS45ODQ4NTMgNDk2LjE3NzQ2NCw0MjQuMTk0NDA1IDQ5Ni4xNzc0NjQsNDIxLjk4OTEwNyBMNDk2LjE3NzQ2NCw0MTQuNTcwMSBDNDk2LjE3NzQ2NCw0MTIuMzY2MjI4IDQ5NC41MDM3ODMsNDEwLjU3MjgyIDQ5Mi40NDg0NDUsNDEwLjU3MjgyIEw0OTIuNDQ4NDQ1LDQxMC41NzI4MiBaIE00OTUuMTEyMDM4LDQyMS45ODc1NzIgQzQ5NS4xMTIwMzgsNDIzLjU2MjI3NiA0OTMuOTE3OTc2LDQyNC44NDE2OTIgNDkyLjQ0ODQxNyw0MjQuODQxNjkyIEw0ODAuNzMwMDk5LDQyNC44NDE2OTIgQzQ3OS4yNjA2NSw0MjQuODQxNjkyIDQ3OC4wNjc5MzIsNDIzLjU2MjI3NiA0NzguMDY3OTMyLDQyMS45ODc1NzIgTDQ3OC4wNjc5MzIsNDE0LjU2ODU2NSBDNDc4LjA2NzkzMiw0MTIuOTkzOTQ0IDQ3OS4yNjIwMiw0MTEuNzE1OTgxIDQ4MC43MzAwOTksNDExLjcxNTk4MSBMNDkyLjQ0ODQxNyw0MTEuNzE1OTgxIEM0OTMuOTE5NDAyLDQxMS43MTU5ODEgNDk1LjExMjAzOCw0MTIuOTk1Mzk3IDQ5NS4xMTIwMzgsNDE0LjU2ODU2NSBMNDk1LjExMjAzOCw0MjEuOTg3NTcyIEw0OTUuMTEyMDM4LDQyMS45ODc1NzIgWiBNNDg2LjU4ODYsNDEzLjk5NzY5OCBDNDg0LjgyNjkzMyw0MTMuOTk3Njk4IDQ4My4zOTIyOTQsNDE1LjUzMzM5NyA0ODMuMzkyMjk0LDQxNy40MjI1NzUgQzQ4My4zOTIyOTQsNDE5LjExODU2OCA0ODQuNTUyODA2LDQyMC41MjA4MDkgNDg2LjA2NzEyNSw0MjAuNzg5MDcgQzQ4Ni4wNjU3LDQyMC44MDk5ODQgNDg2LjA1NTkxNSw0MjAuODI1MDMyIDQ4Ni4wNTU5MTUsNDIwLjg0NTkxOCBMNDg2LjA1NTkxNSw0MjIuNTU4NDEyIEM0ODYuMDU1OTE1LDQyMi44NzQ1MzIgNDg2LjI5MzU4Nyw0MjMuMTMwNzA1IDQ4Ni41ODg2MjgsNDIzLjEzMDcwNSBDNDg2Ljg4MzY0Miw0MjMuMTMwNzA1IDQ4Ny4xMjEzNDEsNDIyLjg3NDUzMiA0ODcuMTIxMzQxLDQyMi41NTg0MTIgTDQ4Ny4xMjEzNDEsNDIwLjg0NTkxOCBDNDg3LjEyMTM0MSw0MjAuODI1MDA1IDQ4Ny4xMTE1NTYsNDIwLjgwOTk1NyA0ODcuMTEwMTMsNDIwLjc4OTA3IEM0ODguNjI0NDUsNDIwLjUyMDgwOSA0ODkuNzg0OTYxLDQxOS4xMTg1NjggNDg5Ljc4NDk2MSw0MTcuNDIyNTc1IEM0ODkuNzg0OTM0LDQxNS41MzMzOTcgNDg4LjM1MTcyLDQxMy45OTc2OTggNDg2LjU4ODYsNDEzLjk5NzY5OCBMNDg2LjU4ODYsNDEzLjk5NzY5OCBaIE00ODYuNTg4Niw0MTkuNzA1ODI3IEM0ODUuNDE0MDgyLDQxOS43MDU4MjcgNDg0LjQ1NzY5Myw0MTguNjc5NTQzIDQ4NC40NTc2OTMsNDE3LjQyNDExIEM0ODQuNDU3NjkzLDQxNi4xNjQwNzMgNDg1LjQxNTUzNSw0MTUuMTQyMjg0IDQ4Ni41ODg2LDQxNS4xNDIyODQgQzQ4Ny43NjE2NjYsNDE1LjE0MjI4NCA0ODguNzE2NjMsNDE2LjE2NzAzNCA0ODguNzE2NjMsNDE3LjQyNDExIEM0ODguNzE5NDI1LDQxOC42ODEwNzggNDg3Ljc2MzExOCw0MTkuNzA1ODI3IDQ4Ni41ODg2LDQxOS43MDU4MjcgTDQ4Ni41ODg2LDQxOS43MDU4MjcgWiIgaWQ9IlNoYXBlIj48L3BhdGg+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4=" alt="">
+							<input type="password" name="pwd" id="user_pwd" placeholder="请输入密码" />
+						</div>
+					</div>
+					<div class="row forget-pwd">
+						<a class="text-right" href="#" style="text-decoration: none;">忘记密码？</a>
+					</div>
+					<div class="row sumbit-btn">
+						<input type="submit" class="btn" name="log-in-btn" id="log-in-btn" value="登录" />
+					</div>
+					</form>
+				</div>
+			</div>
+			</div>
+			<!-- /# end -->
+
+        <div class="s-content">
+            
+            <div class="">
+
+                <div class="masonry">
+    
+                    <div class="grid-sizer"></div>
+    
+                    <article class="masonry__brick entry format-standard animate-this">
+                            
+                        <div class="entry__thumb">
+                            <a href="single-standard.html" class="entry__thumb-link">
+                                <img src="images/thumbs/masonry/woodcraft-600.jpg" 
+                                        srcset="images/thumbs/masonry/woodcraft-600.jpg 1x, images/thumbs/masonry/woodcraft-1200.jpg 2x" alt="">
+                            </a>
+                        </div>
+        
+                        <div class="entry__text">
+                            <div class="entry__header">
+    
+                                <h2 class="entry__title"><a href="single-standard.html">Just a Standard Format Post.</a></h2>
+                                <div class="entry__meta">
+                                    <span class="entry__meta-cat">
+                                        <a href="category.html">Design</a> 
+                                        <a href="category.html">Photography</a>
+                                    </span>
+                                    <span class="entry__meta-date">
+                                        <a href="single-standard.html">Apr 29, 2019</a>
+                                    </span>
+                                </div>
+                                
+                            </div>
+                            <div class="entry__excerpt">
+                                <p>
+                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
+                                </p>
+                            </div>
+                        </div>
+        
+                    </article> <!-- end article -->
+    
+                    <article class="masonry__brick entry format-quote animate-this">
+                            
+                        <div class="entry__thumb">
+                            <blockquote>
+                                <p>Good design is making something intelligible and memorable. Great design is making something memorable and meaningful.</p>
+    
+                                <cite>Dieter Rams</cite>
+                            </blockquote>
+                        </div>   
+        
+                    </article> <!-- end article -->
+    
+                    <article class="masonry__brick entry format-standard animate-this">
+                            
+                        <div class="entry__thumb">
+                            <a href="single-standard.html" class="entry__thumb-link">
+                                <img src="images/thumbs/masonry/tulips-600.jpg" 
+                                        srcset="images/thumbs/masonry/tulips-600.jpg 1x, images/thumbs/masonry/tulips-1200.jpg 2x" alt="">
+                            </a>
+                        </div>
+        
+                        <div class="entry__text">
+                            <div class="entry__header">
+                                <h2 class="entry__title"><a href="single-standard.html">10 Interesting Facts About Caffeine.</a></h2>
+                                <div class="entry__meta">
+                                    <span class="entry__meta-cat">
+                                        <a href="category.html">Health</a>
+                                    </span>
+                                    <span class="entry__meta-date">
+                                        <a href="single-standard.html">Apr 28, 2019</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="entry__excerpt">
+                                <p>
+                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
+                                </p>
+                            </div>
+                        </div>
+        
+                    </article> <!-- end article -->
+                    
+    
+                    <article class="masonry__brick entry format-standard animate-this">
+    
+                        <div class="entry__thumb">
+                            <a href="single-standard.html" class="entry__thumb-link">
+                                <img src="images/thumbs/masonry/dew-600.jpg" 
+                                        srcset="images/thumbs/masonry/dew-600.jpg 1x, images/thumbs/masonry/dew-1200.jpg 2x" alt="">
+                            </a>
+                        </div>
+        
+                        <div class="entry__text">
+                            <div class="entry__header">
+                                <h2 class="entry__title"><a href="single-standard.html">Health Benefits Of Morning Dew.</a></h2>
+                                <div class="entry__meta">
+                                    <span class="entry__meta-cat">
+                                        <a href="category.html">Lifestyle</a>
+                                        <a href="category.html">Health</a>
+                                    </span>
+                                    <span class="entry__meta-date">
+                                        <a href="single-standard.html">Apr 28, 2019</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="entry__excerpt">
+                                <p>
+                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
+                                </p>
+                            </div>
+                        </div>
+        
+                    </article> <!-- end article -->
+    
+                    <article class="masonry__brick entry format-standard animate-this">
+    
+                            <div class="entry__thumb">
+                                <a href="single-standard.html" class="entry__thumb-link">
+                                    <img src="images/thumbs/masonry/rucksack-600.jpg" 
+                                            srcset="images/thumbs/masonry/rucksack-600.jpg 1x, images/thumbs/masonry/rucksack-1200.jpg 2x" alt="">
+                                </a>
+                            </div>
+            
+                            <div class="entry__text">
+                                <div class="entry__header">
+                                    
+                                    <h2 class="entry__title"><a href="single-standard.html">The Art Of Visual Storytelling.</a></h2>
+                                    
+                                    <div class="entry__meta">
+                                        <span class="entry__meta-cat">
+                                            <a href="category.html">Lifestyle</a>
+                                            <a href="category.html">Work</a>
+                                        </span>
+                                        <span class="entry__meta-date">
+                                            <a href="single-standard.html">Apr 26, 2019</a>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="entry__excerpt">
+                                    <p>
+                                    Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
+                                    </p>
+                                </div>
+                            </div>
+            
+                        </article> <!-- end article -->
+    
+                    <article class="masonry__brick entry format-standard animate-this">
+    
+                        <div class="entry__thumb">
+                            <a href="single-standard.html" class="entry__thumb-link">
+                                <img src="images/thumbs/masonry/jump-600.jpg" 
+                                        srcset="images/thumbs/masonry/jump-600.jpg 1x, images/thumbs/masonry/jump-1200.jpg 2x" alt="">
+                            </a>
+                        </div>
+    
+                        <div class="entry__text">
+                            <div class="entry__header">
+                                
+                                <h2 class="entry__title"><a href="single-standard.html">Create Meaningful Family Moments.</a></h2>
+                                <div class="entry__meta">
+                                    <span class="entry__meta-cat">
+                                        <a href="category.html">Family</a>
+                                        <a href="category.html">Relationship</a>
+                                    </span>
+                                    <span class="entry__meta-date">
+                                        <a href="single-standard.html">Apr 26, 2019</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="entry__excerpt">
+                                <p>
+                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
+                                </p>
+                            </div>
+                        </div>
+    
+                    </article> <!-- end article -->
+    
+                    <article class="masonry__brick entry format-audio animate-this">
+    
+                        <div class="entry__thumb">
+                            <a href="single-audio.html" class="entry__thumb-link">
+                                <img src="images/thumbs/masonry/guitarist-600.jpg" 
+                                     srcset="images/thumbs/masonry/guitarist-600.jpg 1x, images/thumbs/masonry/guitarist-1200.jpg 2x" alt="">
+                            </a>
+                        </div>
+    
+                        <div class="entry__text">
+                            <div class="entry__header">
+                                <h2 class="entry__title"><a href="single-audio.html">What Your Music Preference Says About You and Your Personality.</a></h2>
+                                <div class="entry__meta">
+                                    <span class="entry__meta-cat">
+                                        <a href="category.html">Lifestyle</a>
+                                    </span>
+                                    <span class="entry__meta-date">
+                                        <a href="single-standard.html">Apr 24, 2019</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="entry__excerpt">
+                                <p>
+                                    Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
+                                </p>
+                            </div>
+                        </div>
+    
+                    </article> <!-- end article -->
+                    <div class="tlinks">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
+    
+                    <article class="masonry__brick entry format-standard animate-this">
+    
+                        <div class="entry__thumb">
+                            <a href="single-standard.html" class="entry__thumb-link">
+                                <img src="images/thumbs/masonry/beetle-600.jpg" 
+                                        srcset="images/thumbs/masonry/beetle-600.jpg 1x, images/thumbs/masonry/beetle-1200.jpg 2x" alt="">
+                            </a>
+                        </div>
+    
+                        <div class="entry__text">
+                            <div class="entry__header">
+                                <h2 class="entry__title"><a href="single-standard.html">Throwback To The Good Old Days.</a></h2>
+                                <div class="entry__meta">
+                                    <span class="entry__meta-cat">
+                                        <a href="category.html">Lifestyle</a>
+                                    </span>
+                                    <span class="entry__meta-date">
+                                        <a href="single-standard.html">Apr 24, 2019</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="entry__excerpt">
+                                <p>
+                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
+                                </p>
+                            </div>
+                        </div>
+    
+                    </article> <!-- end article -->
+    
+                    <article class="masonry__brick entry format-video animate-this">
+                            
+                        <div class="entry__thumb video-image">
+                            <a href="https://player.vimeo.com/video/117310401?color=339989&title=0&byline=0&portrait=0" data-lity class="entry__thumb-link">
+                                <img src="images/thumbs/masonry/cookies-600.jpg" 
+                                     srcset="images/thumbs/masonry/cookies-600.jpg 1x, images/thumbs/masonry/cookies-1200.jpg 2x" alt="">
+                            </a>
+                        </div>
+        
+                        <div class="entry__text">
+                            <div class="entry__header">
+                                <h2 class="entry__title"><a href="single-video.html">No Sugar Oatmeal Cookies.</a></h2>
+                                <div class="entry__meta">
+                                    <span class="entry__meta-cat">
+                                        <a href="category.html">Lifestyle</a>
+                                        <a href="category.html">Health</a>
+                                    </span>
+                                    <span class="entry__meta-date">
+                                        <a href="single-standard.html">Apr 24, 2019</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="entry__excerpt">
+                                <p>
+                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
+                                </p>
+                            </div>
+                        </div>
+        
+                    </article> <!-- end article -->
+    
+                    <article class="masonry__brick entry format-standard animate-this">
+    
+                        <div class="entry__thumb">
+                            <a href="single-standard.html" class="entry__thumb-link">
+                                <img src="images/thumbs/masonry/lamp-600.jpg" 
+                                        srcset="images/thumbs/masonry/lamp-600.jpg 1x, images/thumbs/masonry/lamp-1200.jpg 2x" alt="">
+                            </a>
+                        </div>
+    
+                        <div class="entry__text">
+                            <div class="entry__header">
+                                <h2 class="entry__title"><a href="single-standard.html">Another Standard Format Post.</a></h2>
+                                <div class="entry__meta">
+                                    <span class="entry__meta-cat">
+                                        <a href="category.html">Design</a>
+                                        <a href="category.html">Photography</a>
+                                    </span>
+                                    <span class="entry__meta-date">
+                                        <a href="single-standard.html">Apr 24, 2019</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="entry__excerpt">
+                                <p>
+                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
+                                </p>
+                            </div>
+                        </div>
+    
+                    </article> <!-- end article -->
+    
+                    <article class="masonry__brick entry format-link animate-this">
+                        
+                        <div class="entry__thumb">
+                            <div class="link-wrap">
+                                <h2>Powerful web & Wordpress hosting. Guaranteed. Starting at $2.59/mo!</h2>
+                                <cite>
+                                    <a target="_blank" href="https://www.dreamhost.com/r.cgi?287326">https://www.dreamhost.com</a>
+                                </cite>
+                            </div>
+                        </div>
+                        
+                    </article> <!-- end article -->
+    
+                    <article class="masonry__brick entry format-gallery animate-this">
+                            
+                        <div class="entry__thumb slider">
+                            <div class="slider__slides">
+                                <div class="slider__slide">
+                                    <img src="images/thumbs/masonry/gallery/slide-1-600.jpg" 
+                                         srcset="images/thumbs/masonry/gallery/slide-1-600.jpg 1x, images/thumbs/masonry/gallery/slide-1-1200.jpg 2x" alt=""> 
+                                </div>
+                                <div class="slider__slide">
+                                    <img src="images/thumbs/masonry/gallery/slide-2-600.jpg" 
+                                         srcset="images/thumbs/masonry/gallery/slide-2-600.jpg 1x, images/thumbs/masonry/gallery/slide-2-1200.jpg 2x" alt=""> 
+                                </div>
+                                <div class="slider__slide">
+                                    <img src="images/thumbs/masonry/gallery/slide-3-600.jpg" 
+                                         srcset="images/thumbs/masonry/gallery/slide-3-600.jpg 1x, images/thumbs/masonry/gallery/slide-3-1200.jpg 2x" alt="">  
+                                </div>
+                            </div>
+                        </div>
+        
+                        <div class="entry__text">
+                            <div class="entry__header">
+                                <h2 class="entry__title"><a href="single-gallery.html">The Best Tropical Leaves Images.</a></h2>
+                                <div class="entry__meta">
+                                    <span class="entry__meta-cat">
+                                        <a href="category.html">Vacation</a>
+                                    </span>
+                                    <span class="entry__meta-date">
+                                        <a href="single-standard.html">Apr 23, 2019</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="entry__excerpt">
+                                <p>
+                                    Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
+                                </p>
+                            </div>
+                        </div>
+        
+                    </article> <!-- end article -->
+    
+                    <article class="masonry__brick entry format-standard animate-this">
+    
+                        <div class="entry__thumb">
+                            <a href="single-standard.html" class="entry__thumb-link">
+                                <img src="images/thumbs/masonry/walk-600.jpg" 
+                                        srcset="images/thumbs/masonry/walk-600.jpg 1x, images/thumbs/masonry/walk-1200.jpg 2x" alt="">
+                            </a>
+                        </div>
+    
+                        <div class="entry__text">
+                            <div class="entry__header">
+                                <h2 class="entry__title"><a href="single-standard.html">Using Repetition and Patterns in Photography.</a></h2>
+                                <div class="entry__meta">
+                                    <span class="entry__meta-cat">
+                                        <a href="category.html">Work</a>
+                                    </span>
+                                    <span class="entry__meta-date">
+                                        <a href="single-standard.html">Apr 23, 2019</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="entry__excerpt">
+                                <p>
+                                    Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
+                                </p>
+                            </div>
+                        </div>
+    
+                    </article> <!-- end article -->
+    
+                    <article class="masonry__brick entry format-standard animate-this">
+    
+                        <div class="entry__thumb">
+                            <a href="single-standard.html" class="entry__thumb-link">
+                                <img src="images/thumbs/masonry/real-600.jpg" 
+                                        srcset="images/thumbs/masonry/real-600.jpg 1x, images/thumbs/masonry/real-1200.jpg 2x" alt="">
+                            </a>
+                        </div>
+    
+                        <div class="entry__text">
+                            <div class="entry__header">
+                                <h2 class="entry__title"><a href="single-standard.html">How We Live Is What Makes Us Real.</a></h2>
+                                <div class="entry__meta">
+                                    <span class="entry__meta-cat">
+                                        <a href="category.html">Travel</a>
+                                        <a href="category.html">Vacation</a>
+                                    </span>
+                                    <span class="entry__meta-date">
+                                        <a href="single-standard.html">Apr 23, 2019</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="entry__excerpt">
+                                <p>
+                                    Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
+                                </p>
+                            </div>
+                        </div>
+    
+                    </article> <!-- end article -->
+    
+                </div> <!-- end masonry -->
+
+            </div> <!-- end masonry-wrap -->
+
+            <div class="row">
+                <div class="column large-full">
+                    <nav class="pgn">
+                        <ul>
+                            <li><a class="pgn__prev" href="#0">Prev</a></li>
+                            <li><a class="pgn__num" href="#0">1</a></li>
+                            <li><span class="pgn__num current">2</span></li>
+                            <li><a class="pgn__num" href="#0">3</a></li>
+                            <li><a class="pgn__num" href="#0">4</a></li>
+                            <li><a class="pgn__num" href="#0">5</a></li>
+                            <li><span class="pgn__num dots">…</span></li>
+                            <li><a class="pgn__num" href="#0">8</a></li>
+                            <li><a class="pgn__next" href="#0">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+        </div> <!-- end s-content -->
+
+
+	<!-- footer尾部 -->
+		<footer class="footer">
+			<div class="go-top">
+			    <a class="smoothscroll" title="Back to Top" href="#top"></a>
+			</div>
+		    <div class="container">
+		        <div class="row">
+		            <div class="col-md-2  col-sm-3 col-xs-6">
+		                <div class="footer-logo">
+		                    <div class="footer-logo-text">TTui</div>
+		                </div>
+		            </div>
+					<div class="col-md-3 col-sm-3 col-xs-6">
+					    <h3>联系我们</h3>
+					    <ul class="list-unstyled links">
+					        <a href="http://www.gdkm.edu.cn/" target="_blank" title="广东科贸" style="text-decoration: none;"><li>广东科贸职业学院</li></a>
+					        <li>+86 17688015836</li>
+					        <li>cyhtq1999@163.com</li>
+					    </ul>
+					</div>
+		            <div class="col-md-3 col-sm-3 col-xs-6">
+		                <h3>联系客服:</h3>
+		                <ul class="list-unstyled">
+		                </ul>
+		            </div>
+					<div class="col-sm-4 col-xs-6">
+					   <img src="../images/wechat.png" alt="#" width="150" style="border-radius:10px;position: absolute;top: 0;left: -150px;"/>
+					    <img src="../images/QQ.png" alt="#" width="155" style="border-radius:10px;position: absolute;top: 0;left: 0px;margin-left: 30px;"/>
+						<img src="../images/img_0095.jpg" alt="#" width="147" style="border-radius:10px;position: absolute;top: 0;left: 0px;margin-left: 213px;"/>
+					</div>				    
+		        </div>
+		        <hr>
+		        <div class="row">
+		            <div class="col-md-12">
+		                <div class="copyright">
+		                    <p class="text-center" style="font-size:16px;color: #fff;;" >Copyright &copy; 2019 / <a href="http://www.gdkm.edu.cn/" target="_blank" title="广东科贸">广东科贸</a>-18软件（613）工作室</p>
+		                </div>
+		            </div>
+		        </div>    
+		    </div>
+		</footer>
+		
+
+    </div> <!-- end s-wrap -->
+
+	<!-- JavaScipt -->
+	<!-- <script src="js/jquery-v1.11.3.js"></script> -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+	<script src="../js/jquery.cslider.js"></script>
+	<script src="../bootstrap/js/bootstrap.min.js"></script>
+	<!-- <script src="../js/validator.js"></script> -->
+	<!-- <script src="../js/input.js"></script> -->
+	<!-- <script src="../js/main.js"></script> -->
+	<!-- 轮播(carousel)插件 -->
+	<!-- <script src="js/owl.carousel.js"></script> -->
+	<!-- 瀑布流式布局插件 -->
+	<script src="../js/isotope.pkgd.js"></script>
+	<!-- <script src="../js/custom.js"></script> -->
+	<script src="../js/index.js"></script>
+
+    <script src="js/plugins.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
